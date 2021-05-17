@@ -24,10 +24,10 @@ export default function Panel(props: IAppProps) {
   return (
     <div className='bg-secondary h-screen w-full sm:fixed sm:max-w-sm p-5 flex flex-col items-center'>
       <div className='flex justify-between w-full'>
-        <button className='bg-button p-3 font-body rounded-md shadow-md font-medium'>
+        <button className='bg-button p-3 font-body rounded-md shadow-md font-medium cursor-pointer'>
           Search for places
         </button>
-        <div className='bg-button p-3 rounded-full shadow-md'>
+        <div className='bg-button p-3 rounded-full shadow-md cursor-pointer'>
           <BiCurrentLocation className='h-6 w-6 text-white' />
         </div>
       </div>
