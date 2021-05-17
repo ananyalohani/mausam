@@ -1273,6 +1273,11 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
+"@heroicons/react@^1.0.1":
+  "integrity" "sha512-uikw2gKCmqnvjVxitecWfFLMOKyL9BTFcU4VM3hHj9OMwpkCr5Ke+MRMyY2/aQVmsYs4VTq7NCFX05MYwAHi3g=="
+  "resolved" "https://registry.npmjs.org/@heroicons/react/-/react-1.0.1.tgz"
+  "version" "1.0.1"
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   "integrity" "sha512-VjeHSlIzpv/NyD3N0YuHfXOPDIixcA1q2ZV98wsMqcYlPmv2n3Yb2lYP9XMElnaFVXg5A7YLTeLu6V84uQDjmQ=="
   "resolved" "https://registry.npmjs.org/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz"
@@ -9459,6 +9464,11 @@
   "integrity" "sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew=="
   "resolved" "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.9.tgz"
   "version" "6.0.9"
+
+"react-icons@^4.2.0":
+  "integrity" "sha512-rmzEDFt+AVXRzD7zDE21gcxyBizD/3NqjbX6cmViAgdqfJ2UiLer8927/QhhrXQV7dEj/1EGuOTPp7JnLYVJKQ=="
+  "resolved" "https://registry.npmjs.org/react-icons/-/react-icons-4.2.0.tgz"
+  "version" "4.2.0"
 
 "react-is@^16.8.1":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
