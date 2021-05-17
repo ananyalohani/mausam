@@ -59,10 +59,10 @@ function App() {
     <div>
       <div className='sm:flex sm:flex-row'>
         <Panel {...panelProps} />
-        <div className='flex-1 flex flex-col items-center mt-3'>
+        <div className='flex-1 flex flex-col items-center mt-3 sm:ml-96'>
           <div
-            style={{ width: window.innerWidth > 640 ? '80%' : '90%' }}
-            className='grid grid-cols-2 sm:grid-cols-5 mt-8 sm:mt-0 mx-auto'
+            style={{ width: window.innerWidth > 640 ? '80%' : '100%' }}
+            className='flex flex-row flex-wrap justify-center sm:justify-start mt-8 sm:mt-0 mx-auto'
           >
             <WeatherCard {...cardProps} />
             <WeatherCard {...cardProps} />

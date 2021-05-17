@@ -18,7 +18,7 @@ export default function Highlights(props: IAppProps) {
       <h1 className='text-center sm:text-left sm:text-2xl'>
         Today's Highlights
       </h1>
-      <div className='grid grid-cols-1 sm:grid-cols-2 gap-6'>
+      <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
         <CardLayout
           title='Wind Status'
           bigText={props.windStatus.speed}

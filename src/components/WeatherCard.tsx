@@ -11,7 +11,7 @@ export interface IAppProps {
 
 export default function App(props: IAppProps) {
   return (
-    <div className='bg-secondary rounded-md flex flex-col items-center justify-around p-6 sm:p-5 w-38 m-4 space-y-5'>
+    <div className='bg-secondary rounded-md flex flex-col items-center justify-around p-6 sm:flex-auto sm:p-5 w-38 m-4 space-y-5 lg:flex-none xl:flex-auto'>
       <p className='sm:text-sm'>{dateString(props.date)}</p>
       <img className='block w-20' src={props.weather.icon} />
       <div className='w-full flex flex-row justify-between'>
