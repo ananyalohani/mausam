@@ -22,7 +22,7 @@ export default function Panel(props: IAppProps) {
   };
 
   return (
-    <div className='bg-secondary h-screen w-full sm:max-w-sm p-5 flex flex-col items-center'>
+    <div className='bg-secondary h-screen w-full sm:h-auto sm:max-w-sm p-5 flex flex-col items-center'>
       <div className='flex justify-between w-full'>
         <button className='bg-button p-3 font-body rounded-md shadow-md font-medium'>
           Search for places

@@ -11,12 +11,14 @@ export interface IAppProps {
 
 export default function App(props: IAppProps) {
   return (
-    <div className='bg-secondary rounded-md flex flex-col items-center justify-around p-5 w-38 m-4 space-y-5'>
-      <p>{dateString(props.date)}</p>
+    <div className='bg-secondary rounded-md flex flex-col items-center justify-around p-6 sm:p-5 w-38 m-4 space-y-5'>
+      <p className='sm:text-sm'>{dateString(props.date)}</p>
       <img className='block w-20' src={props.weather.icon} />
       <div className='w-full flex flex-row justify-between'>
-        <p>{props.minTemperature.celsius}°C</p>
-        <p className='opacity-50'>{props.maxTemperature.celsius}°C</p>
+        <p className='sm:text-sm'>{props.maxTemperature.celsius}°C</p>
+        <p className='sm:text-sm opacity-50'>
+          {props.minTemperature.celsius}°C
+        </p>
       </div>
     </div>
   );

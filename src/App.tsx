@@ -16,6 +16,7 @@ import WeatherCard, { IAppProps as CardProps } from './components/WeatherCard';
 import Highlights, {
   IAppProps as HighlightProps,
 } from './components/Highlights';
+import Footer from './components/Footer';
 
 function App() {
   const panelProps: CurrentWeatherProps = {
@@ -55,17 +56,25 @@ function App() {
   };
 
   return (
-    <div className='App'>
-      <Panel {...panelProps} />
-      <div className='flex flex-wrap justify-center mt-8 mx-auto'>
-        <WeatherCard {...cardProps} />
-        <WeatherCard {...cardProps} />
-        <WeatherCard {...cardProps} />
-        <WeatherCard {...cardProps} />
-        <WeatherCard {...cardProps} />
-      </div>
-      <div>
-        <Highlights {...highProps} />
+    <div>
+      <div className='sm:flex sm:flex-row'>
+        <Panel {...panelProps} />
+        <div className='flex-1 flex flex-col items-center mt-3'>
+          <div
+            style={{ width: window.innerWidth > 640 ? '80%' : '90%' }}
+            className='grid grid-cols-2 sm:grid-cols-5 mt-8 sm:mt-0 mx-auto'
+          >
+            <WeatherCard {...cardProps} />
+            <WeatherCard {...cardProps} />
+            <WeatherCard {...cardProps} />
+            <WeatherCard {...cardProps} />
+            <WeatherCard {...cardProps} />
+          </div>
+          <div style={{ width: window.innerWidth > 640 ? '80%' : '100%' }}>
+            <Highlights {...highProps} />
+          </div>
+          <Footer />
+        </div>
       </div>
     </div>
   );
