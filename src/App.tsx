@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Panel, { CurrentWeatherProps } from './components/Panel';
+import Panel, { IAppProps as CurrentWeatherProps } from './components/Panel';
 import clear from './assets/images/clear.png';
 import hail from './assets/images/hail.png';
 import light_rain from './assets/images/light_rain.png';
@@ -43,6 +43,17 @@ function App() {
       farenheit: 57,
     },
   };
+
+  const highProps: HighlightProps = {
+    windStatus: {
+      speed: 7,
+      direction: 'WSW',
+    },
+    humidity: 84,
+    visibility: 6.4,
+    airPressure: 998,
+  };
+
   return (
     <div className='App'>
       <Panel {...panelProps} />
@@ -53,7 +64,9 @@ function App() {
         <WeatherCard {...cardProps} />
         <WeatherCard {...cardProps} />
       </div>
-      <div></div>
+      <div>
+        <Highlights {...highProps} />
+      </div>
     </div>
   );
 }

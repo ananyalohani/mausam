@@ -8,14 +8,14 @@ export interface Weather {
   icon: string;
 }
 
-export interface CurrentWeatherProps {
+export interface IAppProps {
   weather: Weather;
   temperature: number;
   date: Date;
   location: string;
 }
 
-export default function Panel(props: CurrentWeatherProps) {
+export default function Panel(props: IAppProps) {
   const dateString = (date: string): string => {
     const arr = date.split(' ');
     return arr[0] + ', ' + arr[2] + ' ' + arr[1];
