@@ -51,6 +51,7 @@ export const getWeatherByLocation = async ({
   setLocationWeather,
 }: any): Promise<void> => {
   const forecastURL = `https://tranquil-brook-69806.herokuapp.com/https://www.metaweather.com/api/location/${woeid}`;
+  // const forecastURL = `https://tranquil-brook-69806.herokuapp.com/https://www.metaweather.com/api/location/28743736`;
 
   try {
     const response = await fetch(forecastURL);
@@ -61,35 +62,35 @@ export const getWeatherByLocation = async ({
     const arr: Array<WeatherData> = [];
     data.consolidated_weather.map((item: any) => {
       const dict: WeatherData = {
-        date: new Date(item.date),
+        date: new Date(item.applicable_date),
         weatherState: item.weather_state_name,
         weatherStateAbbr: item.weather_state_abbr,
-        windDirection: item.wind_direction,
-        humidity: item.humidity,
+        windDirection: item.wind_direction_compass,
+        humidity: roundVal(item.humidity),
         icon: assignIcon(item.weather_state_abbr),
         windSpeed: {
-          mph: item.wind_speed,
-          kmph: milesToKm(item.wind_speed),
+          mph: roundVal(item.wind_speed),
+          kmph: roundVal(milesToKm(item.wind_speed)),
         },
         visibility: {
-          miles: item.visibility,
-          km: milesToKm(item.visibility),
+          miles: roundVal(item.visibility),
+          km: roundVal(milesToKm(item.visibility)),
         },
         temperature: {
-          celsius: item.the_temp,
-          farenheit: celsiusToFarenheit(item.the_temp),
+          celsius: roundVal(item.the_temp),
+          farenheit: roundVal(celsiusToFarenheit(item.the_temp)),
         },
         minTemperature: {
-          celsius: item.min_temp,
-          farenheit: celsiusToFarenheit(item.min_temp),
+          celsius: roundVal(item.min_temp),
+          farenheit: roundVal(celsiusToFarenheit(item.min_temp)),
         },
         maxTemperature: {
-          celsius: item.max_temp,
-          farenheit: celsiusToFarenheit(item.max_temp),
+          celsius: roundVal(item.max_temp),
+          farenheit: roundVal(celsiusToFarenheit(item.max_temp)),
         },
         airPressure: {
-          mbar: item.air_pressure,
-          pa: mbarToPa(item.air_pressure),
+          mbar: roundVal(item.air_pressure),
+          pa: roundVal(mbarToPa(item.air_pressure)),
         },
       };
       arr.push(dict);
@@ -101,7 +102,9 @@ export const getWeatherByLocation = async ({
   }
 };
 
-export const assignIcon = (abbr: string): string => {
+const roundVal = (val: number): number => Math.round(val);
+
+const assignIcon = (abbr: string): string => {
   switch (abbr) {
     case 'sn':
       return snow;

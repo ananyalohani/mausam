@@ -1,20 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import Panel, { IAppProps as CurrentWeatherProps } from './components/Panel';
-import snow from './assets/images/snow.png';
-import showers from './assets/images/shower.png';
+import Panel from './components/Panel';
 import WeatherCard, { IAppProps as CardProps } from './components/WeatherCard';
 import Highlights, {
   IAppProps as HighlightProps,
 } from './components/Highlights';
 import Footer from './components/Footer';
-import { Location, LocationWeather, WeatherData } from './types';
+import { Location, LocationWeather, Weather, WeatherData } from './types';
 import { getCurrentLocation, getWOEID, getWeatherByLocation } from './utils';
 
 function App() {
-  const [location, setLocation] = useState<Location>();
-  const [woeid, setWoeid] = useState<string>();
+  const [location, setLocation] = useState<Location>({
+    latitude: 28.643999,
+    longitude: 77.091003,
+  });
+  const [woeid, setWoeid] = useState<number>(28743736);
   const [locationWeather, setLocationWeather] = useState<LocationWeather>();
+  const [today, setToday] = useState<WeatherData>();
+  const [highProps, setHighProps] = useState<HighlightProps>({
+    airPressure: { mbar: 0, pa: 0 },
+    humidity: 0,
+    visibility: { km: 0, miles: 0 },
+    windDirection: '',
+    windSpeed: { kmph: 0, mph: 0 },
+  });
 
   useEffect(() => {
     console.log(woeid);
@@ -32,58 +41,40 @@ function App() {
 
   useEffect(() => {
     console.log(locationWeather);
+    setToday(locationWeather?.sixDayWeather[0]);
   }, [locationWeather]);
 
-  const panelProps: CurrentWeatherProps = {
-    weather: {
-      state: 'Showers',
-      icon: showers,
-    },
-    temperature: 15,
-    date: new Date(),
-    location: 'Helsinki',
-  };
-
-  const cardProps: CardProps = {
-    date: new Date(),
-    weather: {
-      state: 'Snow',
-      icon: snow,
-    },
-    minTemperature: {
-      celsius: 11,
-      farenheit: 50,
-    },
-    maxTemperature: {
-      celsius: 16,
-      farenheit: 57,
-    },
-  };
-
-  const highProps: HighlightProps = {
-    windStatus: {
-      speed: 7,
-      direction: 'WSW',
-    },
-    humidity: 84,
-    visibility: 6.4,
-    airPressure: 998,
-  };
+  useEffect(() => {
+    today &&
+      setHighProps({
+        airPressure: today!.airPressure,
+        humidity: today!.humidity,
+        visibility: today!.visibility,
+        windDirection: today!.windDirection,
+        windSpeed: today!.windSpeed,
+      });
+  }, [today]);
 
   return (
     <div>
       <div className='sm:flex sm:flex-row'>
-        <Panel {...panelProps} />
+        <Panel {...locationWeather!} />
         <div className='flex-1 flex flex-col items-center mt-3 sm:ml-96'>
           <div
             style={{ width: window.innerWidth > 640 ? '80%' : '100%' }}
             className='flex flex-row flex-wrap justify-center sm:justify-start mt-8 sm:mt-0 mx-auto'
           >
-            <WeatherCard {...cardProps} />
-            <WeatherCard {...cardProps} />
-            <WeatherCard {...cardProps} />
-            <WeatherCard {...cardProps} />
-            <WeatherCard {...cardProps} />
+            {locationWeather?.sixDayWeather.slice(1).map((day, key) => {
+              return (
+                <WeatherCard
+                  key={key}
+                  date={day.date}
+                  icon={day.icon!}
+                  minTemperature={day.minTemperature}
+                  maxTemperature={day.maxTemperature}
+                />
+              );
+            })}
           </div>
           <div style={{ width: window.innerWidth > 640 ? '80%' : '100%' }}>
             <Highlights {...highProps} />
