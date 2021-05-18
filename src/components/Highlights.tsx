@@ -25,7 +25,7 @@ export default function Highlights(props: IAppProps) {
           smallText='kmph'
         >
           <div className='flex flex-row space-x-3'>
-            <div className='bg-button p-1 rounded-full '>
+            <div className='bg-subtleAccent p-1 rounded-full '>
               <TiLocationArrow className='h-5 w-5 text-white fill-current' />
             </div>
             <p>{props.windStatus.direction}</p>
@@ -38,10 +38,10 @@ export default function Highlights(props: IAppProps) {
               <p>50</p>
               <p>100</p>
             </div>
-            <div className='h-2 rounded bg-yellow-100 overflow-hidden'>
+            <div className='h-2 rounded bg-white overflow-hidden'>
               <div
                 style={{ width: props.humidity + '%' }}
-                className='h-full rounded bg-yellow-300'
+                className='h-full bg-yellow-300'
               ></div>
             </div>
             <p className='float-right'>%</p>

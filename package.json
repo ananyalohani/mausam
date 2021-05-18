@@ -12,17 +12,22 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "axios": "^0.21.1",
+    "axios-cookiejar-support": "^1.0.1",
+    "fetch": "^1.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
     "react-scripts": "4.0.3",
+    "tough-cookie": "^2.5.0",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "PORT=4000 craco start",
+    "start": "craco start",
     "build": "craco build",
     "test": "craco test",
+    "dev": "cross-env PORT=4000 HTTPS=true SSL_CRT_FILE=server.crt SSL_KEY_FILE=server.key craco start",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -45,6 +50,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.8.6",
+    "cross-env": "^7.0.3",
     "postcss": "^7.0.35",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.2"
   }

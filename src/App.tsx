@@ -1,24 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Panel, { IAppProps as CurrentWeatherProps } from './components/Panel';
-import clear from './assets/images/clear.png';
-import hail from './assets/images/hail.png';
-import light_rain from './assets/images/light_rain.png';
-import sleet from './assets/images/sleet.png';
 import snow from './assets/images/snow.png';
-import heavy_cloud from './assets/images/heavy_cloud.png';
 import showers from './assets/images/shower.png';
-import light_cloud from './assets/images/light_cloud.png';
-import thunderstorm from './assets/images/thunderstorm.png';
-import heavy_rain from './assets/images/heavy_rain.png';
 import WeatherCard, { IAppProps as CardProps } from './components/WeatherCard';
 import Highlights, {
   IAppProps as HighlightProps,
 } from './components/Highlights';
 import Footer from './components/Footer';
+import { Location, LocationWeather, WeatherData } from './types';
+import { getCurrentLocation, getWOEID, getWeatherByLocation } from './utils';
 
 function App() {
+  const [location, setLocation] = useState<Location>();
+  const [woeid, setWoeid] = useState<string>();
+  const [locationWeather, setLocationWeather] = useState<LocationWeather>();
+
+  useEffect(() => {
+    console.log(woeid);
+    if (woeid) getWeatherByLocation({ woeid, setLocationWeather });
+  }, [woeid]);
+
+  useEffect(() => {
+    console.log('location:', location);
+    if (location) getWOEID({ location, setWoeid });
+  }, [location]);
+
+  useEffect(() => {
+    getCurrentLocation({ setLocation });
+  }, []);
+
+  useEffect(() => {
+    console.log(locationWeather);
+  }, [locationWeather]);
+
   const panelProps: CurrentWeatherProps = {
     weather: {
       state: 'Showers',
