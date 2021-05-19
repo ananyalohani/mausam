@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Panel from './components/Panel';
 import WeatherCard from './components/WeatherCard';
@@ -15,7 +15,6 @@ function App() {
     latitude: 28.643999,
     longitude: 77.091003,
   });
-  const [woeid, setWoeid] = useState<number>(28743736);
   const [locationWeather, setLocationWeather] = useState<LocationWeather>();
   const [today, setToday] = useState<WeatherData>();
   const [loading, setLoading] = useState<boolean>(true);
@@ -30,27 +29,23 @@ function App() {
   });
 
   useEffect(() => {
-    console.log(woeid);
-    if (woeid) getWeatherByLocation({ woeid, setLocationWeather });
-  }, [woeid]);
-
-  useEffect(() => {
-    console.log('location:', location);
-    if (location) getWOEID({ location, setWoeid });
+    if (location) getWeatherByLocation({ location, setLocationWeather });
   }, [location]);
 
   const onLocationClick = () => {
     setLoading(true);
     const prevLoc = location;
     getCurrentLocation({ setLocation });
-    if (location === prevLoc) setLoading(false);
+    if (
+      location.latitude === prevLoc.latitude &&
+      location.longitude === prevLoc.longitude
+    )
+      setLoading(false);
   };
 
   useEffect(() => {
-    console.log(locationWeather);
     setToday(locationWeather?.sixDayWeather[0]);
     setLoading(false);
-    console.log(loading);
   }, [locationWeather]);
 
   useEffect(() => {

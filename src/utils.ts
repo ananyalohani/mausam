@@ -25,7 +25,7 @@ export const getCurrentLocation = ({ setLocation }: any) => {
   );
 };
 
-export const getWOEID = async ({ location, setWoeid }: any): Promise<void> => {
+export const getWOEID = async (location: Location): Promise<any> => {
   const woeidURL = `https://tranquil-brook-69806.herokuapp.com/https://www.metaweather.com/api/location/search/?lattlong=${
     location!.latitude
   },${location!.longitude}`;
@@ -33,18 +33,18 @@ export const getWOEID = async ({ location, setWoeid }: any): Promise<void> => {
   try {
     const response = await fetch(woeidURL);
     const data = await response.json();
-    setWoeid(data[0].woeid);
+    return data[0].woeid;
   } catch (err) {
     console.error(err);
   }
 };
 
 export const getWeatherByLocation = async ({
-  woeid,
+  location,
   setLocationWeather,
 }: any): Promise<void> => {
+  const woeid = await getWOEID(location);
   const forecastURL = `https://tranquil-brook-69806.herokuapp.com/https://www.metaweather.com/api/location/${woeid}`;
-  // const forecastURL = `https://tranquil-brook-69806.herokuapp.com/https://www.metaweather.com/api/location/28743736`;
 
   try {
     const response = await fetch(forecastURL);
@@ -124,15 +124,15 @@ const assignIcon = (abbr: string): string => {
   }
 };
 
-const roundVal = (val: number): number => Math.round(val);
-
-export const dateString = (date: Date): string => {
+const dateString = (date: Date): string => {
   const arr = (date + '').split(' ');
   return arr[0] + ', ' + arr[2] + ' ' + arr[1];
 };
 
-export const celsiusToFarenheit = (temp: number) => (9 / 5) * temp + 32;
+const roundVal = (val: number): number => Math.round(val);
 
-export const milesToKm = (dist: number) => dist * 1.609344;
+const celsiusToFarenheit = (temp: number) => (9 / 5) * temp + 32;
 
-export const mbarToPa = (pre: number) => pre * 100;
+const milesToKm = (dist: number) => dist * 1.609344;
+
+const mbarToPa = (pre: number) => pre * 100;
