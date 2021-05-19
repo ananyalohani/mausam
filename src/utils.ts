@@ -11,6 +11,9 @@ import sleet from './assets/images/sleet.png';
 import heavy_cloud from './assets/images/heavy_cloud.png';
 import { Location, LocationWeather, WeatherData } from './types';
 
+const baseURL =
+  'https://tranquil-brook-69806.herokuapp.com/https://www.metaweather.com/';
+
 export const getCurrentLocation = ({ setLocation }: any) => {
   navigator.geolocation.getCurrentPosition(
     (position: GeolocationPosition) => {
@@ -26,9 +29,11 @@ export const getCurrentLocation = ({ setLocation }: any) => {
 };
 
 export const getWOEID = async (location: Location): Promise<any> => {
-  const woeidURL = `https://tranquil-brook-69806.herokuapp.com/https://www.metaweather.com/api/location/search/?lattlong=${
-    location!.latitude
-  },${location!.longitude}`;
+  const woeidURL =
+    baseURL +
+    `api/location/search/?lattlong=${location!.latitude},${
+      location!.longitude
+    }`;
 
   try {
     const response = await fetch(woeidURL);
@@ -44,7 +49,7 @@ export const getWeatherByLocation = async ({
   setLocationWeather,
 }: any): Promise<void> => {
   const woeid = await getWOEID(location);
-  const forecastURL = `https://tranquil-brook-69806.herokuapp.com/https://www.metaweather.com/api/location/${woeid}`;
+  const forecastURL = baseURL + `api/location/${woeid}`;
 
   try {
     const response = await fetch(forecastURL);

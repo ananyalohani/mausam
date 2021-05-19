@@ -14,7 +14,7 @@ export default function Footer() {
         </a>{' '}
         -{' '}
         <a href='https://devchallenges.io/' className='font-medium underline'>
-          devchallenges.io
+          devChallenges.io
         </a>
       </p>
     </footer>

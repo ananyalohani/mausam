@@ -19,12 +19,12 @@ export default function Panel(props: PanelProps) {
   return (
     <div className='bg-secondary h-screen w-full sm:fixed sm:max-w-sm p-5 flex flex-col items-center'>
       <div className='flex justify-between w-full'>
-        <button className='bg-subtleAccent p-3 font-body rounded-md shadow-md font-medium cursor-pointer z-10'>
+        <button className='bg-subtleAccent p-3 font-body rounded shadow-md font-medium focus:outline-none focus:ring-2 ring-brightAccent ring-opacity-80 cursor-pointer z-10'>
           Search by Location
         </button>
         <button
           onClick={props.onLocationClick}
-          className='bg-subtleAccent p-3 rounded-full shadow-md cursor-pointer z-10'
+          className='bg-subtleAccent p-3 rounded-full focus:outline-none focus:ring-2 ring-brightAccent ring-opacity-80  shadow-md cursor-pointer z-10'
         >
           <BiCurrentLocation className='h-6 w-6 text-white' />
         </button>
