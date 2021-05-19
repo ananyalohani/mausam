@@ -1,24 +1,34 @@
 import * as React from 'react';
-import { Temperature, dateString } from '../types';
+import { Temperature, Units } from '../types';
+import Spinner from './Spinner';
 
 export interface IAppProps {
-  date: Date;
+  dateString: string;
   icon: string;
+  weatherState: string;
   minTemperature: Temperature;
   maxTemperature: Temperature;
+  loading: boolean;
 }
 
-export default function App(props: IAppProps) {
+export default function WeatherCard(props: IAppProps) {
   return (
-    <div className='bg-secondary rounded-md flex flex-col items-center justify-around p-6 sm:flex-auto sm:p-5 w-38 m-4 space-y-5 lg:flex-none xl:flex-auto'>
-      <p className='sm:text-sm'>{dateString(props.date)}</p>
-      <img className='block w-20' src={props.icon} />
-      <div className='w-full flex flex-row justify-between'>
-        <p className='sm:text-sm'>{props.maxTemperature.celsius}°C</p>
-        <p className='sm:text-sm opacity-50'>
-          {props.minTemperature.celsius}°C
-        </p>
-      </div>
+    <div className='bg-secondary rounded-md flex flex-col items-center justify-around p-6 sm:flex-auto sm:p-5 w-38 m-4 space-y-3 lg:flex-none xl:flex-auto'>
+      {!props.loading ? (
+        <>
+          <p className='sm:text-sm'>{props.dateString}</p>
+          <img className='block w-20' src={props.icon} />
+          <p className='sm:text-sm'>{props.weatherState}</p>
+          <div className='w-full flex flex-row justify-between'>
+            <p className='sm:text-sm'>{props.maxTemperature.celsius}°C</p>
+            <p className='sm:text-sm opacity-50'>
+              {props.minTemperature.celsius}°C
+            </p>
+          </div>
+        </>
+      ) : (
+        <Spinner />
+      )}
     </div>
   );
 }

@@ -9,6 +9,8 @@ export interface IAppProps {
   visibility: Distance;
   airPressure: Pressure;
   windDirection: string;
+  windDirectionAngle: number;
+  loading: boolean;
 }
 
 export default function Highlights(props: IAppProps) {
@@ -23,31 +25,46 @@ export default function Highlights(props: IAppProps) {
             title='Wind Status'
             bigText={props.windSpeed.kmph + ''}
             smallText='kmph'
+            loading={props.loading}
           >
             <div className='flex flex-row space-x-3'>
-              <div className='bg-subtleAccent p-1 rounded-full '>
-                <TiLocationArrow className='h-5 w-5 text-white fill-current' />
-              </div>
+              {!props.loading && (
+                <div className='bg-subtleAccent p-1 rounded-full '>
+                  <TiLocationArrow
+                    style={{
+                      transform: `rotate(${props.windDirectionAngle}deg)`,
+                    }}
+                    className='h-5 w-5 text-white fill-current transition-all'
+                  />
+                </div>
+              )}
               <p>{props.windDirection}</p>
             </div>
           </CardLayout>
         )}
-        {props.humidity && (
-          <CardLayout title='Humidity' bigText={props.humidity} smallText='%'>
-            <div className='w-full font-light'>
-              <div className='flex flex-row justify-between'>
-                <p>0</p>
-                <p>50</p>
-                <p>100</p>
+        {props.humidity >= 0 && (
+          <CardLayout
+            title='Humidity'
+            bigText={props.humidity}
+            smallText='%'
+            loading={props.loading}
+          >
+            {!props.loading && (
+              <div className='w-full font-light'>
+                <div className='flex flex-row justify-between'>
+                  <p>0</p>
+                  <p>50</p>
+                  <p>100</p>
+                </div>
+                <div className='h-2 rounded bg-white overflow-hidden'>
+                  <div
+                    style={{ width: props.humidity + '%' }}
+                    className='h-full bg-yellow-300'
+                  ></div>
+                </div>
+                <p className='float-right'>%</p>
               </div>
-              <div className='h-2 rounded bg-white overflow-hidden'>
-                <div
-                  style={{ width: props.humidity + '%' }}
-                  className='h-full bg-yellow-300'
-                ></div>
-              </div>
-              <p className='float-right'>%</p>
-            </div>
+            )}
           </CardLayout>
         )}
         {props.visibility && (
@@ -55,6 +72,7 @@ export default function Highlights(props: IAppProps) {
             title='Visibility'
             bigText={props.visibility.km + ''}
             smallText='km'
+            loading={props.loading}
           />
         )}
         {props.airPressure && (
@@ -62,6 +80,7 @@ export default function Highlights(props: IAppProps) {
             title='Air Pressure'
             bigText={props.airPressure.mbar}
             smallText='mb'
+            loading={props.loading}
           />
         )}
       </div>

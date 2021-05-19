@@ -1,6 +1,8 @@
-export interface Weather {
-  state: string;
-  icon: string;
+export interface Units {
+  speed: 'kmph' | 'mph';
+  distance: 'km' | 'miles';
+  temperature: 'celsius' | 'farenheit';
+  pressure: 'mbar' | 'pa';
 }
 
 export interface LocationWeather {
@@ -10,10 +12,12 @@ export interface LocationWeather {
 
 export interface WeatherData {
   date: Date;
+  dateString?: string;
   icon?: string;
   weatherState: string;
   weatherStateAbbr: string;
   windSpeed: Speed;
+  windDirectionAngle: number;
   windDirection: string;
   temperature: Temperature;
   minTemperature: Temperature;
@@ -25,43 +29,25 @@ export interface WeatherData {
 
 export interface Pressure {
   mbar: number;
-  pa?: number;
+  pa: number;
 }
 
 export interface Speed {
-  kmph?: number;
+  kmph: number;
   mph: number;
 }
 
 export interface Distance {
-  km?: number;
+  km: number;
   miles: number;
-}
-
-export interface CurrentWeatherProps {
-  weather: Weather;
-  temperature: number;
-  date: Date;
-  location: string;
 }
 
 export interface Temperature {
   celsius: number;
-  farenheit?: number;
+  farenheit: number;
 }
 
 export interface Location {
   latitude: number;
   longitude: number;
 }
-
-export const dateString = (date: Date): string => {
-  const arr = (date + '').split(' ');
-  return arr[0] + ', ' + arr[2] + ' ' + arr[1];
-};
-
-export const celsiusToFarenheit = (temp: number) => (9 / 5) * temp + 32;
-
-export const milesToKm = (dist: number) => dist * 1.609344;
-
-export const mbarToPa = (pre: number) => pre * 100;

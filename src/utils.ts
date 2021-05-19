@@ -9,14 +9,7 @@ import hail from './assets/images/hail.png';
 import light_rain from './assets/images/light_rain.png';
 import sleet from './assets/images/sleet.png';
 import heavy_cloud from './assets/images/heavy_cloud.png';
-import {
-  Location,
-  LocationWeather,
-  WeatherData,
-  celsiusToFarenheit,
-  milesToKm,
-  mbarToPa,
-} from './types';
+import { Location, LocationWeather, WeatherData } from './types';
 
 export const getCurrentLocation = ({ setLocation }: any) => {
   navigator.geolocation.getCurrentPosition(
@@ -65,6 +58,7 @@ export const getWeatherByLocation = async ({
         date: new Date(item.applicable_date),
         weatherState: item.weather_state_name,
         weatherStateAbbr: item.weather_state_abbr,
+        windDirectionAngle: item.wind_direction,
         windDirection: item.wind_direction_compass,
         humidity: roundVal(item.humidity),
         icon: assignIcon(item.weather_state_abbr),
@@ -93,6 +87,7 @@ export const getWeatherByLocation = async ({
           pa: roundVal(mbarToPa(item.air_pressure)),
         },
       };
+      dict.dateString = dateString(dict.date);
       arr.push(dict);
     });
     lw.sixDayWeather = arr;
@@ -101,8 +96,6 @@ export const getWeatherByLocation = async ({
     console.error(err);
   }
 };
-
-const roundVal = (val: number): number => Math.round(val);
 
 const assignIcon = (abbr: string): string => {
   switch (abbr) {
@@ -118,8 +111,6 @@ const assignIcon = (abbr: string): string => {
       return heavy_rain;
     case 'lr':
       return light_rain;
-    case 's':
-      return snow;
     case 'hc':
       return heavy_cloud;
     case 'lc':
@@ -132,3 +123,16 @@ const assignIcon = (abbr: string): string => {
       return '';
   }
 };
+
+const roundVal = (val: number): number => Math.round(val);
+
+export const dateString = (date: Date): string => {
+  const arr = (date + '').split(' ');
+  return arr[0] + ', ' + arr[2] + ' ' + arr[1];
+};
+
+export const celsiusToFarenheit = (temp: number) => (9 / 5) * temp + 32;
+
+export const milesToKm = (dist: number) => dist * 1.609344;
+
+export const mbarToPa = (pre: number) => pre * 100;
