@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Location } from '../types';
+import { FiChevronLeft } from 'react-icons/fi';
 import useSuggestions from './hooks/useSuggestions';
 
 export interface ISearchProps {
@@ -47,6 +48,7 @@ export default function Search(props: ISearchProps) {
     <div className='flex flex-col w-full '>
       <div className='flex flex-row justify-around w-full mb-3'>
         <button onClick={props.togglePanel} className='btn'>
+          <FiChevronLeft className='btn-icon' />
           Back
         </button>
         <input

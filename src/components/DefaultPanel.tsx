@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { BiCurrentLocation } from 'react-icons/bi';
 import { IoLocationSharp } from 'react-icons/io5';
+import { GoSearch } from 'react-icons/go';
 import { DayWeather } from '../types';
 import cloud_bg from '../assets/images/cloud_background.png';
 
@@ -16,6 +17,7 @@ export default function DefaultPanel(props: DefaultPanelProps) {
     <>
       <div className='flex justify-between w-full'>
         <button onClick={() => props.togglePanel()} className='btn'>
+          <GoSearch className='btn-icon' />
           Search by Location
         </button>
         <button onClick={props.onLocationClick} className='round-btn'>

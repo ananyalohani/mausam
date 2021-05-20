@@ -8,6 +8,7 @@ import useForecast from './components/hooks/useForecast';
 import logo from './assets/logos/logo_expanded_nobg.png';
 import { Location, Units } from './types';
 import { getCurrentLocation } from './utils';
+import { MdSettings } from 'react-icons/md';
 import './App.css';
 
 function App() {
@@ -47,9 +48,13 @@ function App() {
           <div className='flex-1 flex flex-col items-center mt-3 sm:ml-96'>
             <div
               style={{ width: window.innerWidth > 640 ? '80%' : '100%' }}
-              className='flex w-full justify-center sm:justify-start'
+              className='flex w-full justify-center sm:justify-between'
             >
               <img src={logo} className='sm:mb-8' />
+              <button className='btn self-center mr-6'>
+                <MdSettings className='btn-icon flex-initial' />
+                Settings
+              </button>
             </div>
             <div style={{ width: window.innerWidth > 640 ? '80%' : '100%' }}>
               <WeeklyForecast

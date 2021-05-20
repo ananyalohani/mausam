@@ -22,9 +22,13 @@ body {
 }
 
 .btn {
-  @apply bg-subtleAccent p-3 font-body rounded shadow-md font-medium focus:outline-none focus:ring-2 ring-brightAccent ring-opacity-80 cursor-pointer z-10;
+  @apply bg-subtleAccent p-3 font-body rounded shadow-md font-medium focus:outline-none focus:ring-2 ring-brightAccent ring-opacity-80 cursor-pointer z-10 flex items-center;
 }
 
 .round-btn {
-  @apply rounded-full bg-subtleAccent p-3 font-body shadow-md font-medium focus:outline-none focus:ring-2 ring-brightAccent ring-opacity-80 cursor-pointer z-10;
+  @apply rounded-full bg-subtleAccent p-3 font-body shadow-md font-medium focus:outline-none focus:ring-2 ring-brightAccent ring-opacity-80 cursor-pointer z-10 w-min;
+}
+
+.btn-icon {
+  @apply text-white inline mr-1;
 }

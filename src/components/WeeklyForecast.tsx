@@ -12,7 +12,7 @@ export default function WeeklyForecast(props: WeekProps) {
       <h1 className='text-center sm:text-left sm:text-2xl '>
         This Week's Forecast
       </h1>
-      <div className='flex flex-row flex-wrap justify-center sm:justify-start mt-8 sm:mt-0 mx-auto'>
+      <div className='flex flex-row flex-wrap justify-center sm:justify-start mt-8 sm:mt-0'>
         {props.weekWeather.map((day, key) => {
           return (
             <WeatherCard
