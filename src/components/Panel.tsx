@@ -1,27 +1,12 @@
 import React, { useState } from 'react';
 import DefaultPanel from './DefaultPanel';
 import SearchPanel from './SearchPanel';
-import { Location, Temperature } from '../types';
+import { Location, DayWeather } from '../types';
 import '../index.css';
-
-export interface DefaultPanelProps {
-  location: string;
-  weatherState: string;
-  icon: string;
-  dateString: string;
-  temperature: Temperature;
-  loading: boolean;
-  onLocationClick: any;
-  togglePanel: any;
-}
 
 interface PanelProps {
   location: string;
-  weatherState: string;
-  icon: string;
-  dateString: string;
-  temperature: Temperature;
-  loading: boolean;
+  weather: DayWeather;
   onLocationClick: any;
   handleSelect: (props: Location) => void;
 }
@@ -38,11 +23,7 @@ export default function Panel(props: PanelProps) {
       {panelType === 'default' ? (
         <DefaultPanel
           location={props.location}
-          weatherState={props.weatherState}
-          icon={props.icon}
-          dateString={props.dateString}
-          temperature={props.temperature}
-          loading={props.loading}
+          weather={props.weather}
           onLocationClick={props.onLocationClick}
           togglePanel={togglePanel}
         />

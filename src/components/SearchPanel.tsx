@@ -9,7 +9,7 @@ export interface ISearchProps {
 
 export interface CityData {
   data: Array<any>;
-  status: string;
+  status: 'LOADING' | 'OK' | 'ERROR';
   error: any;
 }
 
@@ -33,7 +33,10 @@ export default function Search(props: ISearchProps) {
           style={{ width: '90%' }}
           className='z-50 cursor-pointer hover:bg-primary hover:bg-opacity-30 p-3 transition-all'
           key={suggestion.place_id}
-          onClick={() => props.handleSelect(loc)}
+          onClick={() => {
+            props.handleSelect(loc);
+            props.togglePanel();
+          }}
         >
           <p className='text-sm'>{suggestion.display_name}</p>
         </li>
@@ -49,7 +52,7 @@ export default function Search(props: ISearchProps) {
         <input
           onChange={handleInput}
           placeholder='Enter a city...'
-          className='w-60 bg-primary p-3 rounded ring-1 ring-secondaryLight focus:ring-subtleAccent focus:outline-none disabled:opacity-70'
+          className='w-60 bg-primary p-3 rounded ring-1 ring-secondaryLight focus:ring-white focus:outline-none disabled:opacity-70'
         />
       </div>
       {status === 'OK' && (

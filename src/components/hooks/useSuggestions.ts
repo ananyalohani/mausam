@@ -1,9 +1,8 @@
 import useSWR from 'swr';
 import { CityData } from '../SearchPanel';
+import { fetcher } from '../../utils';
 
 type UseSuggestions = (userInput: string) => CityData;
-
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const useSuggestions: UseSuggestions = (userInput) => {
   const val = userInput.split(' ').join('+');

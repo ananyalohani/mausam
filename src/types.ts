@@ -1,19 +1,12 @@
-export interface Units {
-  speed: 'kmph' | 'mph';
-  distance: 'km' | 'miles';
-  temperature: 'celsius' | 'farenheit';
-  pressure: 'mbar' | 'pa';
-}
-
-export interface LocationWeather {
+export interface Forecast {
   location: string;
-  sixDayWeather: Array<WeatherData>;
+  sixDayWeather: Array<DayWeather>;
 }
 
-export interface WeatherData {
+export interface DayWeather {
   date: Date;
   dateString?: string;
-  icon?: string;
+  icon: string;
   weatherState: string;
   weatherStateAbbr: string;
   windSpeed: Speed;
@@ -50,4 +43,11 @@ export interface Temperature {
 export interface Location {
   latitude: number;
   longitude: number;
+}
+
+export interface Units {
+  speed: 'kmph' | 'mph';
+  distance: 'km' | 'miles';
+  temperature: 'celsius' | 'farenheit';
+  pressure: 'mbar' | 'pa';
 }
