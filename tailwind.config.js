@@ -19,6 +19,7 @@ module.exports = {
       pink: colors.pink,
       primary: '#100E1D',
       secondary: '#1E213A',
+      secondaryLight: '#454763',
       subtleAccent: '#5E3A5F',
       brightAccent: '#A6536E',
     },

@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import { Location, LocationWeather, WeatherData } from './types';
 import { getCurrentLocation, getWOEID, getWeatherByLocation } from './utils';
 import logo from './assets/logos/logo_expanded_nobg.png';
+import Search from './components/Search';
 
 function App() {
   const [location, setLocation] = useState<Location>({
@@ -61,6 +62,16 @@ function App() {
       });
   }, [today]);
 
+  const handleSelect = async (props: Location) => {
+    getWeatherByLocation({ props, setLocationWeather });
+  };
+
+  const [searchBar, setSearchBar] = useState<'hidden' | ''>('hidden');
+
+  useEffect(() => {
+    console.log(searchBar);
+  }, [searchBar]);
+
   return (
     <div>
       <div className='sm:flex sm:flex-row'>
@@ -72,6 +83,12 @@ function App() {
           onLocationClick={onLocationClick}
           temperature={today?.temperature!}
           weatherState={today?.weatherState!}
+          setSearchBar={setSearchBar}
+        />
+        <Search
+          onHandleSelect={handleSelect}
+          status={searchBar}
+          setStatus={setSearchBar}
         />
         <div className='flex-1 flex flex-col items-center mt-3 sm:ml-96'>
           <div
