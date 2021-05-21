@@ -13,7 +13,7 @@
       Demo
     </a>
     <span> | </span>
-    <a href="https://github.com/ananyalohani/Mausam">
+    <a href="https://github.com/ananyalohani/mausam">
       Solution
     </a>
     <span> | </span>
