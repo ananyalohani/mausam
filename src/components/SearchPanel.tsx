@@ -50,6 +50,10 @@ export default function Search(props: ISearchProps) {
         longitude: parseFloat(suggestion.lon),
       };
 
+      const sugArr = suggestion.display_name.split(',');
+      const boldText = sugArr[0];
+      const smallText = sugArr.slice(1).join(',');
+
       return (
         <li
           style={{ width: '90%' }}
@@ -60,7 +64,8 @@ export default function Search(props: ISearchProps) {
             props.togglePanel();
           }}
         >
-          <p className='text-sm'>{suggestion.display_name}</p>
+          <p className='text-base font-medium inline'>{boldText + ','}</p>
+          <p className='text-sm inline opacity-70'>{smallText}</p>
         </li>
       );
     });
