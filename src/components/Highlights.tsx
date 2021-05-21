@@ -31,9 +31,11 @@ export default function Highlights(props: IAppProps) {
             <div className='bg-subtleAccent p-1 rounded-full '>
               <TiLocationArrow
                 style={{
-                  transform: `rotate(${props.weather.windDirectionAngle}deg)`,
+                  transform: `rotate(${
+                    props.weather.windDirectionAngle - 45
+                  }deg)`,
                 }}
-                className='h-5 w-5 text-white fill-current transition-all'
+                className='h-5 w-5 text-white fill-current'
               />
             </div>
             <p>{props.weather.windDirection}</p>

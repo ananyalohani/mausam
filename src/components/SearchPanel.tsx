@@ -23,12 +23,33 @@ export default function Search(props: ISearchProps) {
     setValue(e.target.value);
   };
 
-  const renderSuggestions = () =>
-    data.map((suggestion) => {
+  const renderSuggestions = () => {
+    if (status === 'LOADING')
+      return (
+        <li>
+          <p className='italic text-gray-400 text-sm p-3'>Loading...</p>
+        </li>
+      );
+    else if (status === 'ERROR')
+      return (
+        <li>
+          <p className='italic text-gray-400 text-sm p-3'>
+            There was an error loading the results.
+          </p>
+        </li>
+      );
+    else if (data.length === 0 && value !== '')
+      return (
+        <li>
+          <p className='italic text-gray-400 text-sm p-3'>Not found.</p>
+        </li>
+      );
+    return data.map((suggestion) => {
       const loc: Location = {
         latitude: parseFloat(suggestion.lat),
         longitude: parseFloat(suggestion.lon),
       };
+
       return (
         <li
           style={{ width: '90%' }}
@@ -43,6 +64,7 @@ export default function Search(props: ISearchProps) {
         </li>
       );
     });
+  };
 
   return (
     <div className='flex flex-col w-full '>
@@ -57,11 +79,9 @@ export default function Search(props: ISearchProps) {
           className='w-60 bg-primary p-3 rounded ring-1 ring-secondaryLight focus:ring-white focus:outline-none disabled:opacity-70'
         />
       </div>
-      {status === 'OK' && (
-        <ul className='divide-y divide-secondaryLight flex flex-col items-center'>
-          {renderSuggestions()}
-        </ul>
-      )}
+      <ul className='divide-y divide-secondaryLight flex flex-col items-center'>
+        {renderSuggestions()}
+      </ul>
     </div>
   );
 }

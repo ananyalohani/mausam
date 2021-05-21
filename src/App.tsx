@@ -7,6 +7,7 @@ import SpinnerPage from './components/SpinnerPage';
 import useForecast from './components/hooks/useForecast';
 import logo from './assets/logos/logo_expanded_nobg.png';
 import Settings from './components/Settings';
+import ErrorPage from './components/Error';
 import { Location, Units } from './types';
 import { getCurrentLocation } from './utils';
 import './App.css';
@@ -35,6 +36,7 @@ function App() {
   });
 
   if (status === 'LOADING') return <SpinnerPage />;
+  if (status === 'ERROR') return <ErrorPage />;
   else
     return (
       <div>
@@ -48,8 +50,8 @@ function App() {
           />
           <div className='flex-1 flex flex-col items-center mt-3 sm:ml-96'>
             <div
-              style={{ width: window.innerWidth > 640 ? '80%' : '100%' }}
-              className='flex justify-center sm:justify-between'
+              style={{ width: '80%' }}
+              className='flex flex-col sm:flex-row justify-start sm:justify-between'
             >
               <img src={logo} className='sm:mb-8' />
               <Settings units={units} setUnits={setUnits} />

@@ -12,7 +12,7 @@ export default function CustomSwitch(props: ISwitchProps) {
   return (
     <div>
       <label className='flex flex-row space-x-1 items-center'>
-        <span className='mr-1 text-sm'>{props.leftOption}</span>
+        <span className='mr-1 sm:text-sm'>{props.leftOption}</span>
         <Switch
           onChange={props.onChange}
           checked={props.checked}
@@ -30,7 +30,7 @@ export default function CustomSwitch(props: ISwitchProps) {
           className='react-switch'
           id='material-switch'
         />
-        <span className='ml-1 text-sm'>{props.rightOption}</span>
+        <span className='ml-1 sm:text-sm'>{props.rightOption}</span>
       </label>
     </div>
   );

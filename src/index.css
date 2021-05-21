@@ -11,7 +11,7 @@
     @apply text-xl heading;
   }
   h6 {
-    @apply text-sm heading;
+    @apply text-lg heading;
   }
   p {
     @apply font-body text-lg;

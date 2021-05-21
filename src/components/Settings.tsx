@@ -6,10 +6,7 @@ import Switch from './Switch';
 
 // TODO
 // - Add arrow to pointer
-// - Add loading and "no results" indicators on search panel
-// - Make Error page
 // - Add mui tooltip to current location button
-// - Fix the initial rotation of location pointer
 // - Try SWR and check if there's CORS BT
 // - Refactor code better
 // - Make README
@@ -25,6 +22,7 @@ export default function Settings(props: ISettingsProps) {
 
   const handleClick = (e: any) => setAnchor(anchor ? null : e.currentTarget);
   const handleClickAway = () => setAnchor(null);
+
   const handleChangeTempUnit = (checked: boolean) =>
     props.setUnits({
       ...props.units,
@@ -51,8 +49,8 @@ export default function Settings(props: ISettingsProps) {
 
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
-      <div className='self-center'>
-        <button className='btn mr-6' type='button' onClick={handleClick}>
+      <div className='self-center sm:mt-0 mt-2'>
+        <button className='btn sm:mr-6' type='button' onClick={handleClick}>
           <MdSettings className='btn-icon flex-initial' />
           Settings
         </button>
