@@ -40,7 +40,7 @@ const useForecast: UseForecast = (location) => {
   const forecastData: Forecast = { location: '', sixDayWeather: [] };
   if (data) {
     forecastData.location = data.title;
-    data.consolidated_weather.map((item: any) => {
+    data.consolidated_weather.forEach((item: any) => {
       const dict: DayWeather = {
         date: new Date(item.applicable_date),
         weatherState: item.weather_state_name,

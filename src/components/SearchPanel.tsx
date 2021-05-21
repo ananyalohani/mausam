@@ -30,7 +30,8 @@ export default function Search(props: ISearchProps) {
           <p className='italic text-gray-400 text-sm p-3'>Loading...</p>
         </li>
       );
-    else if (status === 'ERROR')
+    else if (status === 'ERROR') {
+      console.error(error);
       return (
         <li>
           <p className='italic text-gray-400 text-sm p-3'>
@@ -38,7 +39,7 @@ export default function Search(props: ISearchProps) {
           </p>
         </li>
       );
-    else if (data.length === 0 && value !== '')
+    } else if (data.length === 0 && value !== '')
       return (
         <li>
           <p className='italic text-gray-400 text-sm p-3'>Not found.</p>

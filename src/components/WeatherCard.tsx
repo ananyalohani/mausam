@@ -18,7 +18,7 @@ export default function WeatherCard(props: IAppProps) {
   return (
     <div className='bg-secondary rounded-md flex flex-col items-center justify-around p-6 sm:flex-auto sm:p-5 sm:px-6 w-38 m-3 space-y-3 lg:flex-none xl:flex-auto '>
       <p className='sm:text-sm'>{props.dateString}</p>
-      <img className='block w-20' src={props.icon} />
+      <img className='block w-20' alt='weather icon' src={props.icon} />
       <p className='sm:text-sm font-medium'>{props.weatherState}</p>
       <div className='w-full flex flex-row justify-between'>
         <p className='sm:text-sm'>

@@ -40,12 +40,17 @@ export default function DefaultPanel(props: DefaultPanelProps) {
       </div>
       <div className='absolute h-100 w-full sm:max-w-sm overflow-hidden'>
         <div className='w-min'>
-          <img src={cloud_bg} className='max-w-xl opacity-5 mt-10 -ml-20' />
+          <img
+            src={cloud_bg}
+            alt=''
+            className='max-w-xl opacity-5 mt-10 -ml-20'
+          />
         </div>
       </div>
       <div className='flex flex-col items-center justify-around flex-1 mt-20'>
         <img
           src={props.weather.icon}
+          alt='weather icon'
           className='relative self-center'
           style={{ maxWidth: '10rem' }}
         />

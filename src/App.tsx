@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Panel from './components/Panel';
 import Highlights from './components/Highlights';
 import Footer from './components/Footer';
@@ -35,8 +35,10 @@ function App() {
   });
 
   if (status === 'LOADING') return <SpinnerPage />;
-  if (status === 'ERROR') return <ErrorPage />;
-  else
+  if (status === 'ERROR') {
+    console.error(error);
+    return <ErrorPage />;
+  } else
     return (
       <div>
         <div className='sm:flex sm:flex-row'>
@@ -52,7 +54,7 @@ function App() {
               style={{ width: '80%' }}
               className='flex flex-col sm:flex-row justify-start sm:justify-between'
             >
-              <img src={logo} className='sm:mb-8' />
+              <img src={logo} alt='mausam logo' className='sm:mb-8' />
               <Settings units={units} setUnits={setUnits} />
             </div>
             <div style={{ width: window.innerWidth > 640 ? '80%' : '100%' }}>
