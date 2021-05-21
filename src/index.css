@@ -5,10 +5,13 @@
 
 @layer base {
   h1 {
-    @apply text-3xl font-display font-semibold text-gray-100;
+    @apply text-3xl heading;
   }
   h2 {
-    @apply text-xl font-display font-semibold text-gray-100;
+    @apply text-xl heading;
+  }
+  h6 {
+    @apply text-sm heading;
   }
   p {
     @apply font-body text-lg;
@@ -21,6 +24,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.heading {
+  @apply font-display font-semibold text-gray-100;
+}
+
 .btn {
   @apply bg-subtleAccent p-3 font-body rounded shadow-md font-medium focus:outline-none focus:ring-2 ring-brightAccent ring-opacity-80 cursor-pointer z-10 flex items-center;
 }
@@ -31,4 +38,9 @@ body {
 
 .btn-icon {
   @apply text-white inline mr-1;
+}
+
+.popper {
+  border: solid 1px #191829 !important;
+  @apply shadow-md;
 }

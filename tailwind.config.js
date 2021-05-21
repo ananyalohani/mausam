@@ -1,6 +1,7 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
+  important: true,
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -18,6 +19,9 @@ module.exports = {
       violet: colors.violet,
       pink: colors.pink,
       primary: '#100E1D',
+      primary2: '#191829',
+      primary3: '#222134',
+      primary4: '#2B2B40',
       secondary: '#1E213A',
       secondaryLight: '#454763',
       subtleAccent: '#5E3A5F',

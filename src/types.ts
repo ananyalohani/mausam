@@ -1,3 +1,5 @@
+export type LoadStatus = 'OK' | 'ERROR' | 'LOADING';
+
 export interface Forecast {
   location: string;
   sixDayWeather: Array<DayWeather>;
@@ -50,4 +52,9 @@ export interface Units {
   distance: 'km' | 'miles';
   temperature: 'celsius' | 'farenheit';
   pressure: 'mbar' | 'pa';
+}
+
+export enum TempUnit {
+  'celsius' = '°C',
+  'farenheit' = '°F',
 }

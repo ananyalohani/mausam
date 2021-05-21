@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { Location, DayWeather, Forecast } from '../../types';
+import { Location, DayWeather, Forecast, LoadStatus } from '../../types';
 import {
   fetcher,
   dateString,
@@ -12,7 +12,7 @@ import {
 
 interface LocationWeather {
   data: Forecast;
-  status: 'LOADING' | 'OK' | 'ERROR';
+  status: LoadStatus;
   error: any;
 }
 

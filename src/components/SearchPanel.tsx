@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Location } from '../types';
+import { Location, LoadStatus } from '../types';
 import { FiChevronLeft } from 'react-icons/fi';
 import useSuggestions from './hooks/useSuggestions';
 
@@ -10,7 +10,7 @@ export interface ISearchProps {
 
 export interface CityData {
   data: Array<any>;
-  status: 'LOADING' | 'OK' | 'ERROR';
+  status: LoadStatus;
   error: any;
 }
 
