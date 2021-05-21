@@ -9,11 +9,17 @@ export default function Footer() {
       ></div>
       <p className='sm:text-base text-center font-light opacity-50 mb-5 mt-3 sm:mt-0 sm:mb-3 '>
         Made by{' '}
-        <a href='https://ananyalohani.me/' className='font-medium opacity-100'>
+        <a
+          href='https://ananyalohani.me/'
+          className='hover:text-brightAccent transition-all font-medium opacity-100'
+        >
           Ananya Lohani
         </a>{' '}
         -{' '}
-        <a href='https://devchallenges.io/' className='font-medium underline'>
+        <a
+          href='https://devchallenges.io/'
+          className='hover:text-brightAccent transition-all font-medium underline'
+        >
           devChallenges.io
         </a>
       </p>

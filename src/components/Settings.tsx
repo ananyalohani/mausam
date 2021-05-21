@@ -42,7 +42,7 @@ export default function Settings(props: ISettingsProps) {
 
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
-      <div className='self-center sm:mt-0 mt-2'>
+      <div className='self-center sm:mt-0 '>
         <button className='btn sm:mr-6' type='button' onClick={handleClick}>
           <MdSettings className='btn-icon flex-initial' />
           Settings

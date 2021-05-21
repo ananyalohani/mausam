@@ -10,6 +10,7 @@ import Settings from './components/Settings';
 import ErrorPage from './components/Error';
 import { Location, Units } from './types';
 import { getCurrentLocation } from './utils';
+import { BiCodeAlt } from 'react-icons/bi';
 
 function App() {
   const [location, setLocation] = useState<Location>({
@@ -38,40 +39,53 @@ function App() {
   if (status === 'ERROR') {
     console.error(error);
     return <ErrorPage />;
-  } else
-    return (
-      <div>
-        <div className='sm:flex sm:flex-row'>
-          <Panel
-            location={forecastData?.location!}
-            weather={forecastData?.sixDayWeather[0]!}
-            onLocationClick={onLocationClick}
-            handleSelect={handleSelect}
-            temperatureUnit={units.temperature}
-          />
-          <div className='flex-1 flex flex-col items-center mt-3 sm:ml-96'>
-            <div
-              style={{ width: '80%' }}
-              className='flex flex-col sm:flex-row justify-start sm:justify-between'
-            >
-              <img src={logo} alt='mausam logo' className='sm:mb-8' />
+  }
+  return (
+    <div>
+      <div className='sm:flex sm:flex-row'>
+        <Panel
+          location={forecastData?.location!}
+          weather={forecastData?.sixDayWeather[0]!}
+          onLocationClick={onLocationClick}
+          handleSelect={handleSelect}
+          temperatureUnit={units.temperature}
+        />
+        <div className='flex-1 flex flex-col items-center mt-3 sm:ml-96'>
+          <div
+            style={{ width: '80%' }}
+            className='flex flex-col lg:flex-row items-center md:items-start lg:items-center lg:justify-between'
+          >
+            <img src={logo} alt='mausam logo' className='sm:mb-8 max-w-xs' />
+            <div className='flex flex-row items-center mt-3 sm:mt-0 space-x-3 lg:mr-5 md:ml-5 md:mb-5'>
               <Settings units={units} setUnits={setUnits} />
+              <button className='btn self-center ' type='button'>
+                <a
+                  href='https://github.com/ananyalohani/mausam/'
+                  target='_blank'
+                  rel='noreferrer'
+                  className='flex flex-row items-center'
+                >
+                  <BiCodeAlt className='btn-icon flex-initial' />
+                  Code
+                </a>
+              </button>
             </div>
-            <div style={{ width: window.innerWidth > 640 ? '80%' : '100%' }}>
-              <WeeklyForecast
-                weekWeather={forecastData?.sixDayWeather.slice(1)!}
-                temperatureUnit={units.temperature}
-              />
-              <Highlights
-                weather={forecastData?.sixDayWeather[0]!}
-                units={units}
-              />
-            </div>
-            <Footer />
           </div>
+          <div style={{ width: window.innerWidth > 640 ? '80%' : '100%' }}>
+            <WeeklyForecast
+              weekWeather={forecastData?.sixDayWeather.slice(1)!}
+              temperatureUnit={units.temperature}
+            />
+            <Highlights
+              weather={forecastData?.sixDayWeather[0]!}
+              units={units}
+            />
+          </div>
+          <Footer />
         </div>
       </div>
-    );
+    </div>
+  );
 }
 
 export default App;
