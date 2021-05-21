@@ -40,15 +40,19 @@
 **Mausam** is a web app that fetches the weather data for the next 6 days from the Metaweather API.
 
 - **Where can you see my demo?**
+
   The demo is live at [mausam.vercel.app](https://mausam.vercel.app/).
 
 - **What was my experience?**
+
   I took up this project as an opportunity to learn Typescript and TailwindCSS, as well as fetching data from APIs. I was completely new to all these technologies and I truly learnt a lot about them while working on this project.
 
 - **What have I learned/improved?**
+
   I have learnt refactoring my code better so that it's cleaner and easier to manage and debug. I also learnt about custom hooks in React and how they can be used to fetch data.
 
 - **What would I do differently in hindsight?**
+
   I realised about halfway into the project that using [Next.js](https://nextjs.org/) would have saved me a lot of time, especially while dealing with CORS issues with the Metaweather API. Oh well, I guess I'll use it in my _Next_ project (sorry).
 
 - **Total time spent:** Approximately 31 hours over 5 days.
@@ -63,9 +67,9 @@
 
 ## Features
 
-This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv) was to build an application to complete the given user stories.
+This application was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv) was to build an application to complete the given user stories.
 
-The features that I implemented are as follows:
+The features I implemented are as follows:
 
 - Request for your current location's forecast.
 - Request for the forecast of any city.
