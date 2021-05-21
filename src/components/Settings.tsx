@@ -4,11 +4,6 @@ import { Popper, ClickAwayListener } from '@material-ui/core';
 import { Units } from '../types';
 import Switch from './Switch';
 
-// TODO
-// - Add arrow to pointer
-// - Refactor code better
-// - Make README
-
 export interface ISettingsProps {
   units: Units;
   setUnits: any;
@@ -42,7 +37,7 @@ export default function Settings(props: ISettingsProps) {
   const handleChangePressureUnit = (checked: boolean) =>
     props.setUnits({
       ...props.units,
-      pressure: checked ? 'pa' : 'mbar',
+      pressure: checked ? 'mpa' : 'mbar',
     });
 
   return (
@@ -79,9 +74,9 @@ export default function Settings(props: ISettingsProps) {
             />
             <Switch
               onChange={handleChangePressureUnit}
-              checked={props.units.pressure === 'pa'}
-              leftOption='mbar'
-              rightOption='pa'
+              checked={props.units.pressure === 'mpa'}
+              leftOption='mb'
+              rightOption='mPa'
             />
           </div>
         </Popper>

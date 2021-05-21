@@ -63,4 +63,4 @@ export const celsiusToFarenheit = (temp: number) => (9 / 5) * temp + 32;
 
 export const milesToKm = (dist: number) => dist * 1.609344;
 
-export const mbarToPa = (pre: number) => pre * 100;
+export const mbarToMpa = (pre: number) => pre / 10;

@@ -2,6 +2,16 @@ export type LoadStatus = 'OK' | 'ERROR' | 'LOADING';
 
 export type TemperatureUnit = 'celsius' | 'farenheit';
 
+export enum TempUnitEnum {
+  'celsius' = '°C',
+  'farenheit' = '°F',
+}
+
+export enum PressureUnitEnum {
+  'mbar' = 'mb',
+  'mpa' = 'mPa',
+}
+
 export interface Forecast {
   location: string;
   sixDayWeather: Array<DayWeather>;
@@ -26,7 +36,7 @@ export interface DayWeather {
 
 export interface Pressure {
   mbar: number;
-  pa: number;
+  mpa: number;
 }
 
 export interface Speed {
@@ -53,15 +63,5 @@ export interface Units {
   speed: 'kmph' | 'mph';
   distance: 'km' | 'miles';
   temperature: TemperatureUnit;
-  pressure: 'mbar' | 'pa';
-}
-
-export enum TempUnitEnum {
-  'celsius' = '°C',
-  'farenheit' = '°F',
-}
-
-export enum PressureUnitEnum {
-  'mbar' = 'mb',
-  'pa' = 'Pa',
+  pressure: 'mbar' | 'mpa';
 }

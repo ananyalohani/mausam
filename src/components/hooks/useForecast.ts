@@ -5,7 +5,7 @@ import {
   dateString,
   roundVal,
   milesToKm,
-  mbarToPa,
+  mbarToMpa,
   celsiusToFarenheit,
   assignIcon,
 } from '../../utils';
@@ -71,7 +71,7 @@ const useForecast: UseForecast = (location) => {
         },
         airPressure: {
           mbar: roundVal(item.air_pressure),
-          pa: roundVal(mbarToPa(item.air_pressure)),
+          mpa: roundVal(mbarToMpa(item.air_pressure)),
         },
       };
       dict.dateString = dateString(dict.date);

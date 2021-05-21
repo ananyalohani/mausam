@@ -10,7 +10,6 @@ import Settings from './components/Settings';
 import ErrorPage from './components/Error';
 import { Location, Units } from './types';
 import { getCurrentLocation } from './utils';
-import './App.css';
 
 function App() {
   const [location, setLocation] = useState<Location>({

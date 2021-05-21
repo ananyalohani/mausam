@@ -6,6 +6,7 @@
 .pnp.js
 server.key
 server.crt
+/src/react-app-env.d.ts
 
 # testing
 /coverage
