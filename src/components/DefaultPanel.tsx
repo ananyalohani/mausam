@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import { BiCurrentLocation } from 'react-icons/bi';
 import { IoLocationSharp } from 'react-icons/io5';
 import { GoSearch } from 'react-icons/go';
-import { DayWeather } from '../types';
+import { DayWeather, TempUnitEnum, TemperatureUnit } from '../types';
 import cloud_bg from '../assets/images/cloud_background.png';
 
 export interface DefaultPanelProps {
@@ -10,6 +10,7 @@ export interface DefaultPanelProps {
   location: string;
   onLocationClick: any;
   togglePanel: any;
+  temperatureUnit: TemperatureUnit;
 }
 
 export default function DefaultPanel(props: DefaultPanelProps) {
@@ -38,9 +39,11 @@ export default function DefaultPanel(props: DefaultPanelProps) {
         <div className='flex flex-col space-y-20 items-center'>
           <div>
             <h1 className='text-9xl font-medium inline'>
-              {props.weather.temperature.celsius}
+              {props.weather.temperature[props.temperatureUnit]}
             </h1>
-            <h1 className='text-5xl font-medium inline opacity-60'>°C</h1>
+            <h1 className='text-5xl font-medium inline opacity-60'>
+              {TempUnitEnum[props.temperatureUnit]}
+            </h1>
           </div>
           <h1 className='text-4xl font-semibold inline opacity-60'>
             {props.weather.weatherState}

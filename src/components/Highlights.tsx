@@ -1,13 +1,21 @@
-import * as React from 'react';
+import React from 'react';
 import { TiLocationArrow } from 'react-icons/ti';
-import { DayWeather } from '../types';
+import { DayWeather, Units, PressureUnitEnum } from '../types';
 import CardLayout from './CardLayout';
 
 export interface IAppProps {
   weather: DayWeather;
+  units: Units;
 }
 
 export default function Highlights(props: IAppProps) {
+  const speedUnit = props.units.speed;
+  const windSpeed = props.weather.windSpeed[speedUnit];
+  const distUnit = props.units.distance;
+  const visibility = props.weather.visibility[distUnit];
+  const pressureUnit = props.units.pressure;
+  const airPressure = props.weather.airPressure[pressureUnit];
+
   return (
     <div className='p-6 mt-5 flex flex-col space-y-5 sm:mt-0'>
       <h1 className='text-center sm:text-left sm:text-2xl'>
@@ -16,8 +24,8 @@ export default function Highlights(props: IAppProps) {
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
         <CardLayout
           title='Wind Status'
-          bigText={props.weather.windSpeed.kmph + ''}
-          smallText='kmph'
+          bigText={windSpeed}
+          smallText={speedUnit}
         >
           <div className='flex flex-row space-x-3'>
             <div className='bg-subtleAccent p-1 rounded-full '>
@@ -53,13 +61,13 @@ export default function Highlights(props: IAppProps) {
         </CardLayout>
         <CardLayout
           title='Visibility'
-          bigText={props.weather.visibility.km + ''}
-          smallText='km'
+          bigText={visibility}
+          smallText={distUnit}
         />
         <CardLayout
           title='Air Pressure'
-          bigText={props.weather.airPressure.mbar}
-          smallText='mb'
+          bigText={airPressure}
+          smallText={PressureUnitEnum[pressureUnit]}
         />
       </div>
     </div>

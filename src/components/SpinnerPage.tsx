@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { CgSpinner } from 'react-icons/cg';
 import logo from '../assets/logos/logo_expanded_nobg.png';
 

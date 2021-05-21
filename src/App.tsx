@@ -44,6 +44,7 @@ function App() {
             weather={forecastData?.sixDayWeather[0]!}
             onLocationClick={onLocationClick}
             handleSelect={handleSelect}
+            temperatureUnit={units.temperature}
           />
           <div className='flex-1 flex flex-col items-center mt-3 sm:ml-96'>
             <div
@@ -56,8 +57,12 @@ function App() {
             <div style={{ width: window.innerWidth > 640 ? '80%' : '100%' }}>
               <WeeklyForecast
                 weekWeather={forecastData?.sixDayWeather.slice(1)!}
+                temperatureUnit={units.temperature}
               />
-              <Highlights weather={forecastData?.sixDayWeather[0]!} />
+              <Highlights
+                weather={forecastData?.sixDayWeather[0]!}
+                units={units}
+              />
             </div>
             <Footer />
           </div>

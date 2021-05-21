@@ -1,9 +1,10 @@
-import * as React from 'react';
-import { DayWeather } from '../types';
+import React from 'react';
+import { DayWeather, TemperatureUnit } from '../types';
 import WeatherCard from './WeatherCard';
 
 interface WeekProps {
   weekWeather: Array<DayWeather>;
+  temperatureUnit: TemperatureUnit;
 }
 
 export default function WeeklyForecast(props: WeekProps) {
@@ -22,6 +23,7 @@ export default function WeeklyForecast(props: WeekProps) {
               weatherState={day.weatherState}
               minTemperature={day.minTemperature}
               maxTemperature={day.maxTemperature}
+              temperatureUnit={props.temperatureUnit}
             />
           );
         })}

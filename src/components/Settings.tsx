@@ -8,7 +8,6 @@ import Switch from './Switch';
 // - Add arrow to pointer
 // - Add loading and "no results" indicators on search panel
 // - Make Error page
-// - Toggle units using the units state
 // - Add mui tooltip to current location button
 // - Fix the initial rotation of location pointer
 // - Try SWR and check if there's CORS BT

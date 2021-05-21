@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Switch from 'react-switch';
 
 export interface ISwitchProps {
@@ -30,7 +30,7 @@ export default function CustomSwitch(props: ISwitchProps) {
           className='react-switch'
           id='material-switch'
         />
-        <span className='text-sm'>{props.rightOption}</span>
+        <span className='ml-1 text-sm'>{props.rightOption}</span>
       </label>
     </div>
   );
