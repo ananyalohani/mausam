@@ -3,6 +3,7 @@ import { BiCurrentLocation } from 'react-icons/bi';
 import { IoLocationSharp } from 'react-icons/io5';
 import { GoSearch } from 'react-icons/go';
 import { DayWeather, TempUnitEnum, TemperatureUnit } from '../types';
+import { withStyles, Theme, Tooltip } from '@material-ui/core';
 import cloud_bg from '../assets/images/cloud_background.png';
 
 export interface DefaultPanelProps {
@@ -13,6 +14,16 @@ export interface DefaultPanelProps {
   temperatureUnit: TemperatureUnit;
 }
 
+const LightTooltip = withStyles((theme: Theme) => ({
+  tooltip: {
+    backgroundColor: '#f2f2f7c9',
+    color: '#100E1D',
+    boxShadow: theme.shadows[1],
+    fontFamily: 'Fira Sans',
+    fontSize: 12,
+  },
+}))(Tooltip);
+
 export default function DefaultPanel(props: DefaultPanelProps) {
   return (
     <>
@@ -21,9 +32,11 @@ export default function DefaultPanel(props: DefaultPanelProps) {
           <GoSearch className='btn-icon' />
           Search by Location
         </button>
-        <button onClick={props.onLocationClick} className='round-btn'>
-          <BiCurrentLocation className='h-6 w-6 text-white' />
-        </button>
+        <LightTooltip title="Your current location's forecast">
+          <button onClick={props.onLocationClick} className='round-btn'>
+            <BiCurrentLocation className='h-6 w-6 text-white' />
+          </button>
+        </LightTooltip>
       </div>
       <div className='absolute h-100 w-full sm:max-w-sm overflow-hidden'>
         <div className='w-min'>

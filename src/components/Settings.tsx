@@ -6,8 +6,6 @@ import Switch from './Switch';
 
 // TODO
 // - Add arrow to pointer
-// - Add mui tooltip to current location button
-// - Try SWR and check if there's CORS BT
 // - Refactor code better
 // - Make README
 
