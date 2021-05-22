@@ -39,12 +39,8 @@ export default function DefaultPanel(props: DefaultPanelProps) {
         </LightTooltip>
       </div>
       <div className='absolute h-100 w-full sm:max-w-sm overflow-hidden'>
-        <div className='w-min'>
-          <img
-            src={cloud_bg}
-            alt=''
-            className='max-w-xl opacity-5 mt-10 -ml-20'
-          />
+        <div className='flex justify-center w-full'>
+          <img src={cloud_bg} alt='' className='max-w-xl opacity-5 mt-10' />
         </div>
       </div>
       <div className='flex flex-col items-center justify-around flex-1 mt-20'>

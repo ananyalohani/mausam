@@ -20,7 +20,7 @@ export default function Panel(props: PanelProps) {
   };
 
   return (
-    <div className='bg-secondary h-screen w-full sm:fixed sm:max-w-sm p-5 flex flex-col items-center'>
+    <div className='bg-secondary overflow-auto h-screen w-full sm:fixed sm:max-w-sm p-5 flex flex-col items-center'>
       {panelType === 'default' ? (
         <DefaultPanel
           location={props.location}
